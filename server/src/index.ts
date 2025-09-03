@@ -15,6 +15,9 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+import rootRouter from "./routes/Routes";
+app.use("/api", rootRouter);
+
 app.listen(4000, () => {
   connectDB();
   console.log("Server started on port 3000");
