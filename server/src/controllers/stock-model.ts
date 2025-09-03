@@ -55,4 +55,15 @@ const getStocks = async (req: Request, res: Response) => {
   }
 };
 
-export { createStocks, getStocks };
+const getStocksById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const stock = await Stock.findById(id);
+    if (!stock) throw new ApiError(400, "Stock not found");
+    res.status(200).json({ stock });
+  } catch (error) {
+    throw new ApiError(400, "Unable to get Stocks");
+  }
+};
+
+export { createStocks, getStocks, getStocksById };
