@@ -59,7 +59,7 @@ const userSchema = new mongoose.Schema<Iuser, IUserModel, IUserMethods>(
     login_pin: {
       type: String,
       minlength: 4,
-      maxlength: 4,
+      maxlength: 100,
     },
     phone_number: {
       type: String,
