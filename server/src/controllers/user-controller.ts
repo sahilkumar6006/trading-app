@@ -34,7 +34,16 @@ const registerUser = async (
     !blocked_until_pin ||
     !balance
   )
-    throw new ApiError(400, "Invalid data");
+    console.log(
+      "int he invalid Data",
+      wrong_pin_attempts,
+      balance,
+      typeof wrong_pin_attempts,
+      typeof balance,
+      wrong_pin_attempts < 0,
+      balance < 0
+    );
+  throw new ApiError(400, "Invalid data");
   if (wrong_pin_attempts < 0) throw new ApiError(400, "Invalid data");
   if (balance < 0) throw new ApiError(400, "Invalid data");
 
