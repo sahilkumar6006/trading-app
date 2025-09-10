@@ -22,8 +22,11 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+// app.use(Limiter);
+
 import rootRouter from "./routes/Routes";
 import { getPaginatedData } from "./controllers/PraticePagination";
+import { Limiter } from "./utils/rateLimiter";
 app.use("/api", rootRouter);
 
 app.get("/getPaginatedData", getPaginatedData);
