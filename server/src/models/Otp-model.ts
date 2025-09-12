@@ -32,27 +32,6 @@ const OtpSchema = new mongoose.Schema<IOtp>({
   },
 });
 
-OtpSchema.pre("save", async function (next) {
-  if (this.isNew) {
-    const salt = await bcrypt.genSalt(10);
-    await sendVerificationMail(this.email, this.otp, this.otp_type);
-    this.otp = await bcrypt.hash(this.otp, salt);
-  }
-  next();
-});
+const Otp = mongoose.model<IOtp>("Otp", OtpSchema);
 
-OtpSchema.methods.compareOtp = async function (enteredOtp: string) {
-  return await bcrypt.compare(enteredOtp, this.otp);
-};
-
-async function sendVerificationMail(
-  email: string,
-  otp: string,
-  otp_type: string
-) {
-  try {
-    // const result = await mailSender(email, otp, otp_type);
-  } catch (error) {
-    console.log(error);
-  }
-}
+export default Otp;
