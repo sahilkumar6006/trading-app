@@ -1,4 +1,4 @@
-import { createOrder, getOrderDetails } from "../controllers/Order-model";
+import { createOrder, getOrderDetails } from "../controllers/OrderController";
 import { Router } from "express";
 
 const OrderRoutes = Router();

@@ -3,6 +3,7 @@ import { ApiError } from "../utils/ApiError";
 import { Request, Response, NextFunction } from "express";
 
 const createOrder = async (req: Request, res: Response) => {
+  console.log("in the req boyd", req.body);
   const { user, stock, quantity, price, type, remainingBalance } = req.body;
   if (!user || !stock || !quantity || !price || !type || !remainingBalance)
     throw new ApiError(400, "Invalid data");
